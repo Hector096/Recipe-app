@@ -1,0 +1,14 @@
+<nav class="navbar navbar-dark bg-dark navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <h2>My Recipe's</h2>
+    </a>
+  </div>
+
+  <ul class="nav navbar-nav navbar-right d-flex flex-row gap-3 pe-3">
+        <% if user_signed_in? %>
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "logout"%></li>
+         <%end%>
+      </ul>
+</nav>
