@@ -1,0 +1,28 @@
+<div class="inv-btn-container">
+    <button type="button" class="btn btn-primary">Add inventory</button>
+</div>
+<div>
+    <% if @inventories.length == 0 %>
+        <div class="no-ivent">
+            <p>No inventories</p>
+        </div>
+    <% else %>
+        <div class="inv-list-container">
+            <% @inventories.each do |inventory| %>
+                <div class="inv-list-item">
+                    <div class="inv-item-actitle">
+                        <div>
+                            <span><%= inventory.name %></span>
+                        </div>
+                        <div>
+                            <%= link_to 'Remove', inventory_path(inventory.id), method: :delete %>
+                        </div>
+                    </div>
+                    <div class="inv-item-description">
+                        <p><%= inventory.description %></p>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+</div>
