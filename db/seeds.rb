@@ -6,3 +6,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Inventory.create(name: "Inventory 1", user_id: 1, description: "This is my first inventory")
+Inventory.create(name: "Inventory 2", user_id: 1, description: "This is my second inventory")

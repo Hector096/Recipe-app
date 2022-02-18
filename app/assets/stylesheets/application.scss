@@ -1,1 +1,53 @@
 @import "bootstrap";
+
+body {
+  background-color: lightgray;
+}
+
+.inv-btn-container {
+  padding: 20px;
+  text-align: right;
+}
+
+.no-ivent {
+  margin: 20px;
+  text-align: center;
+  padding: 10px;
+}
+
+.no-ivent p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.inv-list-container {
+  padding: 10px;
+}
+
+.inv-list-item {
+  margin: 45px 40px;
+  padding: 35px 10px;
+  display: flex;
+  border-radius: 20px;
+  background-color: azure;
+  box-shadow: 0 0 5px 3px darkgrey;
+}
+
+.inv-item-actitle {
+  flex: 1;
+  text-align: center;
+}
+
+.inv-item-actitle span {
+  font-size: 25px;
+}
+
+.inv-item-description {
+  flex: 3;
+  align-self: center;
+}
+
+.inv-item-description p {
+  margin: 0;
+}
