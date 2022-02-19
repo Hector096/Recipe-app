@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     resources :general_shopping_lists, only: [:index]
   end
   
-  resources :foods,:inventories, except: [ :show, :update]
+  resources :foods, except: [ :show, :update]
+
+  resources :inventories, except: [:update] do
+    resources :food_inventories, only: [:new, :create, :destroy]
+  end
 
   get 'public_recipes', to: 'recipes#public_recipes', as: :public_recipes
   

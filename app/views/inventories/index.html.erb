@@ -1,5 +1,7 @@
 <div class="inv-btn-container">
-    <button type="button" class="btn btn-primary">Add inventory</button>
+    <%= link_to new_inventory_url do %>
+        <button type="button" class="btn btn-primary">Add inventory</button>
+    <% end %>
 </div>
 <div>
     <% if @inventories.length == 0 %>
@@ -12,14 +14,18 @@
                 <div class="inv-list-item">
                     <div class="inv-item-actitle">
                         <div>
-                            <span><%= inventory.name %></span>
+                            <%= link_to inventory_path(inventory.id) do %>
+                                <span><%= inventory.name %></span>
+                            <% end %>
                         </div>
                         <div>
-                            <%= link_to 'Remove', inventory_path(inventory.id), method: :delete %>
+                            <%= button_to 'Remove', inventory_path(inventory.id), method: :delete %>
                         </div>
                     </div>
                     <div class="inv-item-description">
-                        <p><%= inventory.description %></p>
+                        <%= link_to inventory_path(inventory.id) do %>
+                            <p><%= inventory.description %></p>
+                        <% end %>
                     </div>
                 </div>
             <% end %>

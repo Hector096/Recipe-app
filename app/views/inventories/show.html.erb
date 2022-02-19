@@ -1,0 +1,10 @@
+<h1><%= @inventory.name %></h1>
+<%= link_to 'Add food', new_inventory_food_inventory_path(@inventory.id) %>
+<hr>
+<table>
+    <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+    </tr>
+</table>
