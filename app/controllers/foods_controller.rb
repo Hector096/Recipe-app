@@ -1,4 +1,4 @@
-class FoodController < ApplicationController
+class FoodsController < ApplicationController
   load_and_authorize_resource
 
   def index

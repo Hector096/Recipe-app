@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   end
   
   resources :foods,:inventories, except: [ :show, :update]
-  # Defines the root path route ("/")
+
+  get 'general_shopping_list', to: 'general_shopping_list#index', as: :shopping_list
+  get 'public_recipes', to: 'recipes#public_recipes', as: :public_recipes
+  
   root 'recipes#public_recipes'
   
 end

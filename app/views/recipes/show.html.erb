@@ -1,0 +1,43 @@
+<main class="recipe-container">
+  <h1><%= @recipe.name %></h1>
+  <section class="details">
+    <div>
+      <p>Preparation time: <%= @recipe.preparation_time %> minutes </p>
+      <p>Cooking time: <%= @recipe.cooking_time %> minutes </p>
+      <p>Steps go here...</p>
+      <%
+=begin%>
+ <%= link_to 'Generate shopping list', shopping_list_url, class: 'button' %> 
+<%
+=end%>
+    </div>
+    <div>
+      <div>
+        <label for="public">Public</label>
+        <input name="public" type="checkbox">
+      </div>
+      <%= link_to 'Add ingredient', new_recipe_ingredient_url(@recipe), class: 'button' %>
+    </div>
+  </section>
+  <section class="ingredients">
+    <table>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Actions</th>
+      </tr>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <tr>
+          <td><%= ingredient.food.name %></td>
+          <td><%= "#{ingredient.quantity} #{ingredient.food.measurement_unit}" %></td>
+          <td>$<%= ingredient.food.price %></td>
+          <td>
+            <%= link_to 'Modify', edit_ingredient_url(ingredient), class: 'button' %>
+            <%= link_to 'Remove', ingredient_url(ingredient), method: :delete, class: 'button' %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </section>
+</main>

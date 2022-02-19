@@ -1,4 +1,5 @@
-class IngredientController < ApplicationController
+class IngredientsController < ApplicationController
+
   def new
     @recipe = current_recipe
     @ingredient = Ingredient.new(recipe: @recipe)
@@ -6,9 +7,20 @@ class IngredientController < ApplicationController
 
   def create
     food = Food.create!(user: current_user, **food_params)
-    current_recipe.add_ingredient!(food, ingredient_params[:quantity])
+    current_recipe.add_ingredient(food, ingredient_params[:quantity])
     flash[:notice] = 'Added ingredient!'
     redirect_to recipe_url(current_recipe)
+  end
+
+  def edit
+    @ingredient = current_ingredient
+  end
+
+  def update
+    ingredient = current_ingredient
+    ingredient.update!(ingredient_params)
+    redirect_to recipe_url(ingredient.recipe_id)
+    puts params
   end
 
   def destroy

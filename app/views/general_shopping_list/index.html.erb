@@ -1,0 +1,28 @@
+<main>
+  <div class="d-flex justify-content-center">
+    <h1 class="list-header">Shopping List</h1>
+  </div>
+  <div class="d-flex total-div justify-content-center">
+    <span>Amount of food items to buy: <%= @missing_items.size %> </span>
+    <span>
+      Total value of food needed: $
+      <%= @missing_items.reduce(0) { |sum, item| sum + ((item[1] - item[0]) * item[3]) } %>
+    </span>
+  </div>
+  <div>
+    <table>
+      <tr class="table-header">
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Price($)</th>
+      </tr>
+      <% @missing_items.each do |item|%>
+        <tr>
+          <td> <%= item[2]%> </td>
+          <td> <%= item[1] - item[0] %> <%= item[4] %></td>
+          <td> <%= (item[1] - item[0]) * item[3] %> </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</main>
