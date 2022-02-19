@@ -20,6 +20,6 @@ class RecipesController < ApplicationController
     flash[:notice] = 'Deleted Recipe!'
     redirect_to recipes_url
   end
-  
+
   def new_ingredient; end
 end

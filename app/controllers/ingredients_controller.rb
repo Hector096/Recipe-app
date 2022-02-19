@@ -1,5 +1,4 @@
 class IngredientsController < ApplicationController
-
   def new
     @recipe = current_recipe
     @ingredient = Ingredient.new(recipe: @recipe)

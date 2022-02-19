@@ -1,5 +1,5 @@
 class GeneralShoppingListController < ApplicationController
-    # load_and_authorize_resource
+  # load_and_authorize_resource
   before_action :retrieve_missing_items
   def index
     retrieve_missing_items
