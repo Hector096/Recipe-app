@@ -1,0 +1,43 @@
+
+
+
+<h1><%= @recipe.name %></h1>
+<div class="d-flex">
+  <div>
+    <p>Preparation time: <%= @recipe.preparation_time %> minutes </p>
+      <p>Cooking time: <%= @recipe.cooking_time %> minutes </p>
+    <p><%= @recipe.description %></p>
+  </div>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+    <label class="form-check-label" for="flexSwitchCheckDefault">Public</label>
+  </div>
+</div>
+<div>
+  <%= link_to "Shoping list",  recipe_general_shopping_lists_path(@recipe.id), :class => "btn btn-primary my-5" %>
+  <%= link_to "Add Ingredient", new_recipe_ingredient_url(@recipe.id), :class => "btn btn-primary my-5" %>
+
+<hr>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @recipe.ingredients.includes([:food]).each do |ingredient| %>
+    <tr>
+      <th scope="row"><%= ingredient.food.name %></th>
+      <td><%= ingredient.quantity %></td>
+      <td><%= ingredient.food.price * ingredient.quantity %></td>
+      <td>
+        <%= button_to "Remove", ingredient_url(ingredient), method: :delete, :class => "btn btn-danger" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

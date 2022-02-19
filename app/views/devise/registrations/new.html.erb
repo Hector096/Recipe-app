@@ -1,0 +1,37 @@
+<div class="text-center">
+<div class="text-center">
+<div class="w-100 mt-5">
+<div class="d-flex justify-content-center flex-column">
+<h2 class="display-3 mb-5">Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { "data-turbo": "false" }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+
+
+<div class="field">
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'w-50', placeholder: "Name" %>
+  </div>
+
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: 'w-50 mt-3', placeholder: "Email" %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password, autocomplete: "new-password" , class: 'w-50 mt-3', placeholder: "New Password (6 characters minimum)" %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'w-50 mt-3', placeholder: "Confirm Password" %>
+  </div>
+
+  <div class="actions mt-2">
+    <%= f.submit "Sign up" ,class: 'w-50 mt-3' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+</div>
+</div>
+</div>
