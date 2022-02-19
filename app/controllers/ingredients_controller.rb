@@ -6,7 +6,7 @@ class IngredientsController < ApplicationController
 
   def create
     food = Food.create!(user: current_user, **food_params)
-    current_recipe.add_ingredient(food, ingredient_params[:quantity])
+    current_recipe.add_ingredient!(food, ingredient_params[:quantity])
     flash[:notice] = 'Added ingredient!'
     redirect_to recipe_url(current_recipe)
   end

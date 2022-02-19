@@ -5,11 +5,7 @@
       <p>Preparation time: <%= @recipe.preparation_time %> minutes </p>
       <p>Cooking time: <%= @recipe.cooking_time %> minutes </p>
       <p>Steps go here...</p>
-      <%
-=begin%>
- <%= link_to 'Generate shopping list', shopping_list_url, class: 'button' %> 
-<%
-=end%>
+      <%= link_to 'Generate shopping list', shopping_list_url, class: 'button' %>
     </div>
     <div>
       <div>
