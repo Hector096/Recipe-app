@@ -5,7 +5,6 @@ class Recipe < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 250 }
   validates :description, presence: true, length: { maximum: 1000 }
-  validates :public, presence: true, inclusion: [true, false]
 
   def add_ingredient!(food, quantity)
     already_exists = foods.find_by(name: food.name)

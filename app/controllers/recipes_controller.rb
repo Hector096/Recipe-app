@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: :public_recipes
 
   def create
+    puts recipe_params
     @recipe = current_user.recipes.new(recipe_params)
     @recipe.user_id = current_user.id
 
