@@ -14,12 +14,14 @@
         </tr>
     </thead>
     <tbody>
-     <% @recipe.ingredients.each do |r| %>
-    <tr>
-      <th scope="row"><%= r.food.name %></th>
-      <td><%= r.quantity %></td>
-      <td><%= r.food.price * r.quantity %></td>
-    </tr>
-    <% end %>
+      <% @recipe.ingredients.each do |r| %>
+        <% if @food.include?(r.food) %>
+          <tr>
+            <th scope="row"><%= r.food.name %></th>
+            <td><%= r.quantity %></td>
+            <td><%= r.food.price * r.quantity %></td>
+          </tr>
+        <% end %>
+      <% end %>
     </tbody>
     </table>
