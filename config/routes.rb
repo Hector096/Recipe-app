@@ -10,10 +10,6 @@ Rails.application.routes.draw do
   
   resources :foods, except: [ :show, :update]
 
-  resources :inventories, except: [:update] do
-    resources :food_inventories, only: [:new, :create, :destroy]
-  end
-
   get 'public_recipes', to: 'recipes#public_recipes', as: :public_recipes
   
   root 'recipes#public_recipes'
