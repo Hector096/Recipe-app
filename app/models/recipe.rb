@@ -7,7 +7,6 @@ class Recipe < ApplicationRecord
   validates :description, presence: true, length: { maximum: 1000 }
   validates :public, presence: true, inclusion: [true, false]
 
-
   def add_ingredient!(food, quantity)
     already_exists = foods.find_by(name: food.name)
     if already_exists
@@ -17,7 +16,6 @@ class Recipe < ApplicationRecord
     end
   end
 
-  
   def add_ingredient(food, quantity)
     already_exists = foods.find_by(name: food.name)
     created = ingredients.create(food: food, quantity: quantity) unless already_exists
