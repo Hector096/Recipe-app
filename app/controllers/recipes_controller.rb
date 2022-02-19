@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: :public_recipes
 
   def create
+    puts recipe_params
     @recipe = current_user.recipes.new(recipe_params)
     @recipe.user_id = current_user.id
 
@@ -41,6 +42,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time, :public)
+    params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time,
+                                   :public).with_defaults(public: false)
   end
 end
