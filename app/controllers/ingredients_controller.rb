@@ -12,7 +12,6 @@ class IngredientsController < ApplicationController
     redirect_to recipe_url(current_recipe)
   end
 
-
   def destroy
     ingredient = current_ingredient
     ingredient.destroy!

@@ -28,7 +28,7 @@ RSpec.describe 'Foods Index Page Features', type: :feature do
     end
 
     it 'should see a link to delete a food item on the page' do
-      expect(page).to have_link('Delete')
+      expect(page).to have_button('Delete')
     end
 
     it 'should see a link to add food item' do
@@ -36,12 +36,7 @@ RSpec.describe 'Foods Index Page Features', type: :feature do
     end
 
     it 'When I click on add food link, it redirects me to a page fr adding a food item' do
-      click_link('Add Food')
-      expect(page).to have_current_path(new_food_url)
-    end
-
-    it 'When I click on add food link, it redirects me to a page fr adding a food item' do
-      click_link('Delete')
+      click_button('Delete')
       expect(@vladmir.foods.size).to eql 0
       expect(page).to_not have_content('Soya Beans')
     end

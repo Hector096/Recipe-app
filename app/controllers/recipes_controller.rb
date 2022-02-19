@@ -31,7 +31,7 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @recipes.destroy!
+    @recipe.destroy!
     flash[:notice] = 'Deleted Recipe!'
     redirect_to recipes_url
   end

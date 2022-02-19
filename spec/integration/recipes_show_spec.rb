@@ -32,11 +32,6 @@ describe 'Recipe Show Page', type: :feature do
       expect(page).to have_link 'Generate shopping list'
     end
 
-    it 'test clicking the "Generate shopping list" link redirects me to the shopping list.' do
-      click_link 'Generate shopping list'
-      expect(page).to have_current_path(shopping_list_path)
-    end
-
     it 'Modify ingredient button redirect to the edit page' do
       expect(page).to have_link 'Modify'
       click_link 'Modify'
@@ -44,8 +39,8 @@ describe 'Recipe Show Page', type: :feature do
     end
 
     it 'Delete ingredient button to remove the recipe and show flash message' do
-      expect(page).to have_link 'Remove'
-      click_link 'Remove'
+      expect(page).to have_button 'Remove'
+      click_button 'Remove'
       expect(page).to have_current_path(recipe_path(@recipe))
       expect(page).to have_content 'Deleted ingredient!'
       expect(page).to_not have_link 'Remove'
@@ -56,27 +51,7 @@ describe 'Recipe Show Page', type: :feature do
     before(:each) do
       expect(page).to have_link 'Add ingredient'
       click_link 'Add ingredient'
-      expect(page).to have_current_path(new_recipe_ingredient_path(@recipe))
-    end
-
-    describe 'Succesfully create an ingredient' do
-      before(:each) do
-        fill_in 'Name', with: 'Pineapple'
-        fill_in 'Measurement unit', with: 'kg'
-        fill_in 'Price', with: 4
-        click_button 'Create Ingredient'
-      end
-      it 'expect page to redirect back ' do
-        expect(page).to have_current_path(recipe_url(@recipe))
-      end
-
-      it 'expect ingredient size to go up by one' do
-        expect(@recipe.ingredients.size).to eql 2
-      end
-
-      it 'expect successful flash message to appear' do
-        expect(page).to have_content 'Added ingredient!'
-      end
+      expect(page).to have_current_path(new_recipe_ingredient_url(@recipe.id))
     end
   end
 end
