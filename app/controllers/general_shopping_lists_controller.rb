@@ -12,5 +12,6 @@ class GeneralShoppingListsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @ingredient = Ingredient.all
     @food = Food.all
+    @total_price = sum(@recipe.ingredients.includes([:food]))
   end
 end
