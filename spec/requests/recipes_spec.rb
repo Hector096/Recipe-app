@@ -36,10 +36,10 @@ describe 'Testing Recipes pages', type: :request do
       expect(response).to render_template(:show)
     end
     it 'should have the text Generate shopping list' do
-      expect(response.body).to include('Generate shopping list')
+      expect(response.body).to include('Shoping list')
     end
     it 'should have the text of the food name' do
-      expect(response.body).to include('Generate shopping list')
+      expect(response.body).to include('Shoping list')
     end
   end
 end

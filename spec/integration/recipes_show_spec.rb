@@ -29,13 +29,7 @@ describe 'Recipe Show Page', type: :feature do
     end
 
     it 'a link to the general shopping list' do
-      expect(page).to have_link 'Generate shopping list'
-    end
-
-    it 'Modify ingredient button redirect to the edit page' do
-      expect(page).to have_link 'Modify'
-      click_link 'Modify'
-      expect(page).to have_current_path(edit_ingredient_path(@recipe.ingredients.first))
+      expect(page).to have_link 'Shoping list'
     end
 
     it 'Delete ingredient button to remove the recipe and show flash message' do
@@ -49,7 +43,7 @@ describe 'Recipe Show Page', type: :feature do
 
   describe 'Add ingredient button tests' do
     before(:each) do
-      expect(page).to have_link 'Add ingredient'
+      expect(page).to have_link 'Add Ingredient'
       click_link 'Add ingredient'
       expect(page).to have_current_path(new_recipe_ingredient_url(@recipe.id))
     end
