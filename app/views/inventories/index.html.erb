@@ -10,17 +10,21 @@
         <div class="inv-list-container">
             <% @inventories.each do |inventory| %>
                 <div class="inv-list-item">
-                    <div class="inv-item-actitle">
-                        <div>
-                            <span><%= inventory.name %></span>
+                    <%= link_to inventory_path(inventory.id) do %>
+                        <div class="inv-item-actitle">
+                            <div>
+                                <span><%= inventory.name %></span>
+                            </div>
+                            <template>
+                                <div class="remove-btn">
+                                    <%= link_to 'Remove', inventory_path(inventory.id), method: :delete %>
+                                </div>
+                            </template>
                         </div>
-                        <div>
-                            <%= link_to 'Remove', inventory_path(inventory.id), method: :delete %>
+                        <div class="inv-item-description">
+                            <p><%= inventory.description %></p>
                         </div>
-                    </div>
-                    <div class="inv-item-description">
-                        <p><%= inventory.description %></p>
-                    </div>
+                    <% end %>
                 </div>
             <% end %>
         </div>

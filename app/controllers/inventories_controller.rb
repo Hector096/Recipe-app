@@ -3,7 +3,13 @@ class InventoriesController < ApplicationController
     @inventories = Inventory.all
   end
 
-  def show; end
+  def show
+    @inventory = Inventory.find_by_id(params[:id])
+  end
 
-  def destroy; end
+  def destroy
+    @inventory = Inventory.find_by_id(params[:id])
+    @inventory.destroy
+    redirect_to inventories_path, :notice => "Inventory deleted successfully"
+  end
 end

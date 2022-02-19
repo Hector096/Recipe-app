@@ -25,13 +25,18 @@ body {
   padding: 10px;
 }
 
-.inv-list-item {
+.inv-list-item a {
   margin: 45px 40px;
   padding: 35px 10px;
   display: flex;
   border-radius: 20px;
   background-color: azure;
   box-shadow: 0 0 5px 3px darkgrey;
+}
+
+.inv-list-container a {
+  text-decoration: none;
+  color: black;
 }
 
 .inv-item-actitle {
@@ -50,4 +55,13 @@ body {
 
 .inv-item-description p {
   margin: 0;
+}
+
+.remove-btn button {
+  border: none;
+  background-color: lightcoral;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 20px 0;
 }
