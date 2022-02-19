@@ -1,14 +1,20 @@
-<main>
-  <div class="recipes">
-    <h1>Recipes</h1>
-    <% @recipes.each do |recipe| %>
-      <%= link_to recipe_url(recipe), class: 'recipe-box' do %>
-        <div>
-          <h3><%= recipe.name %></h3>
-          <%= button_to 'REMOVE', recipe_url(recipe), method: :delete, class: 'button' %>
+<div class="container-fluid">
+  <h1 class="text-center mt-4 mb-5">Public Recipes</h1>
+  <div class="d-flex justify-content-end"> <%= link_to "Create Your Recipe", new_recipe_path, :class => "btn btn-primary my-2 mx-2" %></div>
+ 
+  <% @recipes.each do |recipe| %>
+    <%= link_to recipe_url(recipe), class: 'recipe-box d-flex-column' do %>
+      <div class="m-2 border p-5">
+        <div class="d-flex" style="justify-content: space-between">
+          <div>
+          <h3><%= recipe.name%></h3>
+         <p> <%= button_to 'REMOVE', recipe_url(recipe), method: :delete, class: "btn btn-danger" %>
+          </div>
+          <div style="margin-left: 15rem; justify-content: space-between">
+              <p><%= recipe.description %></p>
+          </div>
         </div>
-        <p><%= recipe.description %></p>
-      <% end %>
+      </div>
     <% end %>
-  </div>
-</main>
+  <% end %>
+</div>

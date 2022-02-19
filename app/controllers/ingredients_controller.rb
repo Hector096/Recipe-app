@@ -11,16 +11,6 @@ class IngredientsController < ApplicationController
     redirect_to recipe_url(current_recipe)
   end
 
-  def edit
-    @ingredient = current_ingredient
-  end
-
-  def update
-    ingredient = current_ingredient
-    ingredient.update!(ingredient_params)
-    redirect_to recipe_url(ingredient.recipe_id)
-    puts params
-  end
 
   def destroy
     ingredient = current_ingredient

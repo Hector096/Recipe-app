@@ -5,14 +5,14 @@
       <p>Preparation time: <%= @recipe.preparation_time %> minutes </p>
       <p>Cooking time: <%= @recipe.cooking_time %> minutes </p>
       <p>Steps go here...</p>
-      <%= link_to 'Generate shopping list', shopping_list_url, class: 'button' %>
+      <%= link_to 'Generate shopping list', recipe_general_shopping_lists_path(@recipe.id), class: 'button' %>
     </div>
     <div>
       <div>
         <label for="public">Public</label>
         <input name="public" type="checkbox">
       </div>
-      <%= link_to 'Add ingredient', new_recipe_ingredient_url(@recipe), class: 'button' %>
+      <%= link_to 'Add ingredient', new_recipe_ingredient_url(@recipe.id), class: 'button' %>
     </div>
   </section>
   <section class="ingredients">
