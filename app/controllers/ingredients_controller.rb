@@ -1,11 +1,12 @@
 class IngredientsController < ApplicationController
   def new
+    @foods = current_user.foods.all
     @recipe = current_recipe
     @ingredient = Ingredient.new(recipe: @recipe)
   end
 
   def create
-    food = Food.create!(user: current_user, **food_params)
+    food = Food.find(params[:food_id])
     current_recipe.add_ingredient!(food, ingredient_params[:quantity])
     flash[:notice] = 'Added ingredient!'
     redirect_to recipe_url(current_recipe)
@@ -27,10 +28,6 @@ class IngredientsController < ApplicationController
 
   def current_ingredient
     Ingredient.find(params[:id])
-  end
-
-  def food_params
-    params.require(:ingredient).permit(:name, :price, :measurement_unit)
   end
 
   def ingredient_params
