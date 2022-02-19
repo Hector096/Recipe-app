@@ -1,1 +1,9 @@
-<%= render "form" %>
+<div class="recipes">
+<div class="form d-md-block">
+<h1>New Recipe</h1>
+<br>
+<%= render 'form', recipe: @recipe %>
+<br>
+<%= link_to 'Back', recipes_path, class: 'btn btn-secondary' %>
+</div>
+</div>

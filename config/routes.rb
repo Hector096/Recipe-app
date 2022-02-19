@@ -1,17 +1,18 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   devise_for :users
-
-  resources :recipes, except: [ :update ] do
-    resources :recipe_foods, except: [:edit, :update]
-    resources :ingredients, controller: 'ingredients', except: [ :index, :show ], shallow: true
-    resources :general_shopping_lists, only: [:index]
+  root 'foods#index'
+  get 'users/index'
+  resources :users, only: %i[index]
+  resources :foods, only: %i[index new create destroy]
+  resources :recipes, only: [:index, :show, :new, :create, :destroy] do
+    resources :recipe_foods, only: [:new, :create, :destroy, :update, :edit]
   end
-  
-  resources :foods,:inventories, except: [ :show, :update]
-  get 'public_recipes', to: 'recipes#public_recipes', as: :public_recipes
-  
-  root 'recipes#public_recipes'
-  
+  resources :inventories do
+    resources :inventory_foods
+  end
+  put 'recipes/:id/update', to: 'recipes#update', as: 'update'
+  post 'shopping_list/recipe_id=:recipe_id', to: 'recipes#generate_list', as: 'generate_shopping_list'
+  get 'public_recipes', to: 'recipes#public', as: 'public'
+  get 'shopping_list/recipe_id=:recipe_id&inventory_id=:inventory_id', to: 'recipes#generate', as: "shopping_list"
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,40 +1,29 @@
-<%= form_with model: @recipe, method: :post, local: true do |form| %>
-    <div class="mb-5 w-50 ">
-      <%= form.label :name, "Name", :class => "form-label" %>
-      <%= form.text_field :name, placeholder: "Recipe Name", required: true, :class => "form-control" %>
-    </div>
-
-    <div class="mb-5 w-50">
-      <%= form.label :description, "Description", :class => "form-label" %>
-      <%= form.text_field :description, placeholder: "Recipe Description", required: true, :class => "form-control" %>
-    </div>
-
-    <div class="mb-5 w-50">
-      <%= form.label :preparation_time, "Preparation Time", :class => "form-label" %>
-      <%= form.text_field :preparation_time, placeholder: "Recipe Preparation Time", required: true, :class => "form-control" %>
-      <div class="col-auto">
-        <span id="passwordHelpInline" class="form-text">
-        Time measured in minutes .
-        </span>
-      </div>
-    </div>
-
-    <div class="mb-2 w-50">
-      <%= form.label :cooking_time, "Cooking Time", :class => "form-label" %>
-      <%= form.text_field :cooking_time, placeholder: "Recipe Cooking Time", required: true, :class => "form-control" %>
-      <div class="col-auto">
-        <span id="passwordHelpInline" class="form-text">
-        Time measured in minutes .
-        </span>
-      </div>
-    </div>
-
-    <div>
-      <%= form.label :public, "You can make your recipe public" %>
-      <%= form.check_box :public %>
-    </div>
-
-    <div>
-      <%= form.submit "Create", class: "btn btn-primary", disable_with: "Please wait..." %>
+<%= form_with(model: recipe, url: recipes_path) do |form| %>
+  <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this Recipe from being saved:</h2>
+      <ul>
+        <% @recipe.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
+  <%= form.text_field :name, placeholder: 'Name', id:"name", class:"form-control" %>
+  <br>
+  <%= form.text_field :cookingTime, placeholder: 'Cooking time', id:"cookingTime", class:"form-control" %>
+  <br>
+  <%= form.text_field :preparationTime, placeholder: 'Preparation time', id:"preparationTime",class:"form-control" %>
+  <br>
+  <%= form.text_area :description, placeholder: 'Description', id:"description", class:"form-control" %>
+  <br>
+  <div class="form-check form-switch">
+    <%= form.check_box :public, class:"form-check-input", id:"flexSwitchCheckDefault" %>
+    <label class="form-check-label" for="flexSwitchCheckDefault">Public</label>
+  </div>
+  <br>
+  <div class="actions">
+    <%= form.submit class: 'btn btn-dark' %>
+  </div>
+  <br>
+<% end %>

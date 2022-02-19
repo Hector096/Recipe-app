@@ -36,12 +36,19 @@ To run the tests locally :
  
 
 
-👤 **Author**
+👤 **Authors**
 
 :bearded_person: **Hector**
   - GitHub: [@githubhandle](https://github.com/Hector096)
   - Linkedin: [@linkedinhandle](https://www.linkedin.com/in/hector096/)
 
+👤 **Lilian Francis**
+  - GitHub: [@githubhandle](https://github.com/lilyfrancis)
+  - Linkedin: [@linkedinhandle](https://www.linkedin.com/in/lilianfrancis/)
+
+  👤 **Leandro Barretoo**
+  - GitHub: [@githubhandle](https://github.com/Leandro-Barretoo)
+  - Linkedin: [@linkedinhandle](https://www.linkedin.com/in/Leandro-Barretoo/)
 
 ## 🤝 Contributing
 

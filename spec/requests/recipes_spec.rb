@@ -1,45 +1,68 @@
 require 'rails_helper'
 
-describe 'Testing Recipes pages', type: :request do
-  before(:each) do
-    @user = User.create!(name: 'matt', email: 'matt@test.com', password: 'matt123')
-    @recipe = @user.recipes.create!(
-      name: 'Pizza', preparation_time: 25,
-      cooking_time: 120, description: 'Classic Hawaiian Pizza!',
-      public: true
-    )
-    login_as @user
+RSpec.describe 'Recipes', type: :request do
+  include Devise::Test::IntegrationHelpers
+
+  let(:user) { User.create(name: 'Amine', email: 'amine@mail.com', password: 'password') }
+  let(:recipe) do
+    user.recipes.create(user_id: user.id, name: 'Wonderful cake', cookingTime: 5.5, preparationTime: 12.6,
+                        description: 'Test the wondrful cake', public: true)
   end
 
-  describe 'GET #index page' do
-    before(:each) { get recipes_url }
-    it 'should return correct response' do
-      expect(response).to have_http_status(200)
+  describe 'GET /index' do
+    before do
+      sign_in user
+      get recipes_path
     end
-    it 'should render the correct template' do
-      expect(response).to render_template(:index)
+
+    it 'should return response status correct (ok)' do
+      expect(response).to have_http_status(:ok)
     end
-    it 'should have the text from food name' do
-      expect(response.body).to include('Pizza')
+
+    it 'respons to html' do
+      expect(response.content_type).to include 'text/html'
     end
-    it 'should have the text from description' do
-      expect(response.body).to include('Classic Hawaiian Pizza!')
+
+    it 'should include correct placeholder' do
+      expect(response.body).to include('Add recipe')
     end
   end
 
-  describe 'GET #show page' do
-    before(:each) { get recipe_url(@recipe) }
-    it 'should return correct response' do
-      expect(response).to have_http_status(200)
+  describe 'GET /new' do
+    before do
+      sign_in user
+      get new_recipe_path
     end
-    it 'should render the correct template' do
-      expect(response).to render_template(:show)
+
+    it 'should return response status correct (ok)' do
+      expect(response).to have_http_status(:ok)
     end
-    it 'should have the text Generate shopping list' do
-      expect(response.body).to include('Generate shopping list')
+
+    it 'respons to html' do
+      expect(response.content_type).to include 'text/html'
     end
-    it 'should have the text of the food name' do
-      expect(response.body).to include('Generate shopping list')
+
+    it 'should include correct placeholder' do
+      expect(response.body).to include('Cooking time')
+    end
+  end
+
+  describe 'GET /show' do
+    before do
+      sign_in user
+      get recipe_path(recipe)
+    end
+
+    it 'should return response status correct (ok)' do
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'respons to html' do
+      expect(response.content_type).to include 'text/html'
+    end
+
+    it 'should include correct placeholder' do
+      expect(response.body).to include('Public')
     end
   end
 end
