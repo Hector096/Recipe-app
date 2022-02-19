@@ -3,8 +3,8 @@
         <%= f.label :food %>
         <select>
             <option selected>Select Food</option>
-            <% @foods.each do |f| %>
-                <option value=<%= f.id %>><%= f.name %></option>
+            <% @foods.each do |j| %>
+                <option value=<%= j.id %>><%= j.name %></option>
             <% end %>
         </select>
     </div>

@@ -7,7 +7,7 @@ class FoodInventoriesController < ApplicationController
     def create
         @foods = current_user.foods.all
         @inventory = Inventory.find_by_id(params[:inventory_id])
-        @food_inventory = @inventory.food_inventories.new(foodinventory_params)
+        @food_inventory = @inventory.food_inventories.new(inventory_id: foodinventory_params[:inventory_id], food_id: foodinventory_params[:name], quantity: foodinventory_params[:quantity])
         if @food_inventory.save
             flash[:success] = 'Food added successfully'
             redirect_to inventory(@inventory.id)
@@ -20,6 +20,6 @@ class FoodInventoriesController < ApplicationController
     private
 
     def foodinventory_params
-        params.permit(:food, :quantity)
+        params.permit(:inventory_id, :name, :quantity)
     end
 end
