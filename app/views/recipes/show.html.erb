@@ -30,7 +30,7 @@
           <td>$<%= ingredient.food.price %></td>
           <td>
             <%= link_to 'Modify', edit_ingredient_url(ingredient), class: 'button' %>
-            <%= link_to 'Remove', ingredient_url(ingredient), method: :delete, class: 'button' %>
+            <%= button_to 'Remove', ingredient_url(ingredient), method: :delete, class: 'button' %>
           </td>
         </tr>
       <% end %>
